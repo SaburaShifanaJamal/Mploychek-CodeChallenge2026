@@ -1,0 +1,84 @@
+<main class="page">
+  <section class="intro">
+    <div class="intro-top">
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        <path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="brand">Casefile</span>
+    </div>
+
+    <div class="intro-body">
+      <h1>Track every background check from request to result.</h1>
+      <p class="lede">One place for cases, their status and who is working on them.</p>
+    </div>
+
+    <div class="sheet" aria-hidden="true">
+      <div class="sheet-head">
+        <strong>Meera Nair</strong>
+        <span>Case CF-1041</span>
+      </div>
+      <div class="row"><span>Education check</span><app-status-stamp status="Verified" /></div>
+      <div class="row"><span>Employment check</span><app-status-stamp status="In progress" /></div>
+      <div class="row"><span>Address check</span><app-status-stamp status="Pending" /></div>
+      <div class="row"><span>Reference check</span><app-status-stamp status="Discrepancy" /></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to see your cases.</p>
+
+      <div class="field">
+        <label for="userId">User ID</label>
+        <input id="userId" formControlName="userId" autocomplete="username" />
+        @if (showError('userId')) {
+          <span class="error">Enter your user ID.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="pw">
+          <input id="password" [type]="showPassword() ? 'text' : 'password'"
+                 formControlName="password" autocomplete="current-password" />
+          <button type="button" class="toggle" (click)="showPassword.set(!showPassword())"
+                  [attr.aria-pressed]="showPassword()">
+            {{ showPassword() ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        @if (showError('password')) {
+          <span class="error">Enter your password.</span>
+        }
+      </div>
+
+      <fieldset class="roles">
+        <legend>Sign in as</legend>
+        @for (r of roles; track r) {
+          <label class="role">
+            <input type="radio" formControlName="role" [value]="r" />
+            <span>{{ r }}</span>
+          </label>
+        }
+      </fieldset>
+
+      @if (error()) {
+        <p class="error server-error" role="alert">{{ error() }}</p>
+      }
+
+      <button class="btn btn-primary submit" type="submit" [disabled]="busy()">
+        {{ busy() ? 'Signing in...' : 'Sign in' }}
+      </button>
+
+      <div class="demo">
+        <p class="hint">Demo accounts. Select one to fill the form.</p>
+        @for (a of demoAccounts; track a.userId) {
+          <button type="button" class="chip" (click)="fill(a)">
+            <strong>{{ a.role }}</strong>: {{ a.userId }}
+          </button>
+        }
+      </div>
+    </form>
+  </section>
+</main>

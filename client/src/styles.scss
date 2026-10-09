@@ -1,0 +1,87 @@
+    .me { display: grid; gap: 0.75rem; padding: 0.75rem; border-top: 1px solid rgb(255 255 255 / 0.15); }
+
+:root {
+  --ink: #16272B;
+  --ink-soft: #52656A;
+  --paper: #EEF2F0;
+  --surface: #FFFFFF;
+  --line: #D3DCD8;
+  --teal: #0E7C7B;
+  --teal-dark: #0A5E5D;
+  --danger: #B3372D;
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2 { margin: 0; line-height: 1.2; font-family: 'Bricolage Grotesque', system-ui, sans-serif; }
+
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+
+.btn {
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--ink); color: #fff; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--teal-dark); border-color: var(--teal-dark); }
+
+:root {
+  --verified: #1F7A4D;
+  --progress: #2B5FA8;
+  --pending: #A06208;
+  --discrepancy: #B3372D;
+}
+
+.muted { color: var(--ink-soft); }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.skeleton {
+  display: block;
+  height: 1em;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #E1E8E5 25%, #F0F4F2 50%, #E1E8E5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+    .delay { margin-top: auto; display: grid; gap: 0.4rem; padding: 0 0.5rem; }
+    .delay-label { font-size: 0.8rem; color: #A9BDBA; }
+    .segs { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .seg {
+      padding: 0.2rem 0.55rem;
+      border: 1.5px solid #6F8683;
+      background: none;
+      color: #fff;
+      font: inherit;
+      font-size: 0.8rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .seg.on { background: #fff; color: var(--ink); border-color: #fff; }
