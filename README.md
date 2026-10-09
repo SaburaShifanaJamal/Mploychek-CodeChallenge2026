@@ -16,7 +16,7 @@
 
 ## 🎬 Demo video
 
-▶️ **[Watch the walkthrough]((https://drive.google.com/file/d/1JLAOvco8cVPJOx61T28l6QihXt-pvwYz/view?usp=sharing))**
+▶️ **[Watch the walkthrough](https://drive.google.com/file/d/1JLAOvco8cVPJOx61T28l6QihXt-pvwYz/view?usp=sharing)**
 
 ---
 
